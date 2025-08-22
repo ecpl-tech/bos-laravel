@@ -1,10 +1,17 @@
-<?php include 'header.php'; ?>
+@extends ('admin.layout.app')
+@section('main-section')
 <div class="page-body">
     <div class="container-fluid">
         <div class="page-title">
             <div class="row">
                 <div class="col-6">
-                    <h4>Live Class List</h4>
+                    <h4>Lecture List</h4>
+                </div>
+                <div class="col-6">
+                    <div class="justify-content-end d-flex">
+                        <a class="btn btn-primary" href="{{ route('admin.lecture.add') }}">
+                            <i class="fa fa-plus"></i> Add Lecture</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -64,4 +71,4 @@
         </div>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+@endsection

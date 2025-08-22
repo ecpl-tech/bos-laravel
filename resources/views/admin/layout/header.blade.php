@@ -256,216 +256,216 @@
                                         </ul>
                                     </li>
 
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Subscribers</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="foundation-subscribers.php">Foundation </a></li>
-                                            <li><a href="intermediate-subscribers.php">Intermediate </a></li>
-                                            <li><a href="final-subscribers.php">Final </a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Lecture Details</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="add_lecture.php">Add Lecture</a></li>
-                                            <li><a href="live_class_list.php">Live Class List</a></li>
-                                            <li><a href="bfys_class_list.php">BFYS Class List</a></li>
-                                            <li><a href="revisionary_class_list.php">Revisionary Class List</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>POU</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="pou-list.php">List</a></li>
-                                            <li><a href="pou-add.php">Add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Mock Test Paper</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="mock_test_paper_list.php">List</a></li>
-                                            <li><a href="mock_test_paper_add.php">Add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Faculty</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="{{ route('admin.faculty.list') }}">List</a></li>
-                                            <li><a href="{{ route('admin.faculty.add') }}">Add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>PDF</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="pdf_list.php">List</a></li>
-                                            <li><a href="pdf_add.php">Add</a></li>
-                                            <li><a href="pdf_authenticate.php">PDF Authenticate</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Push Notification</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="push_notification_list.php">List</a></li>
-                                            <li><a href="push_notification_add.php">Add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Students Journal</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="students_journal_list.php">List</a></li>
-                                            <li><a href="students_journal_add.php">Add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>MCQ</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="mcq_paper_list.php">Paper List</a></li>
-                                            <li><a href="mcq_paper_add.php">Paper Add</a></li>
-                                            <li><a href="mcq_count.php">MCQ Count</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Daily Quiz</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="daily_quiz_upload_list.php">List</a></li>
-                                            <li><a href="daily_quiz_upload_add.php">Add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"> </i><a
-                                            class="sidebar-link sidebar-title link-nav" href="feedback.php">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Feedback</span></a>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Feeds</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="feeds_list.php">List</a></li>
-                                            <li><a href="feeds_add.php">Add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Slider Banner</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="slider_list.php">List</a></li>
-                                            <li><a href="slider_add.php">Add</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
-                                        <a class="sidebar-link sidebar-title" href="#">
-                                            <svg class="stroke-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
-                                            </svg>
-                                            <svg class="fill-icon">
-                                                <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
-                                            </svg>
-                                            <span>Webinar</span>
-                                        </a>
-                                        <ul class="sidebar-submenu">
-                                            <li><a href="webinar_list.php">List</a></li>
-                                            <li><a href="webinar_add.php">Add</a></li>
-                                        </ul>
-                                    </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Subscribers</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="foundation-subscribers.php">Foundation </a></li>
+                                    <li><a href="intermediate-subscribers.php">Intermediate </a></li>
+                                    <li><a href="final-subscribers.php">Final </a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Lecture Details</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="add_lecture.php">Add Lecture</a></li>
+                                    <li><a href="live_class_list.php">Live Class List</a></li>
+                                    <li><a href="bfys_class_list.php">BFYS Class List</a></li>
+                                    <li><a href="revisionary_class_list.php">Revisionary Class List</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>POU</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="pou-list.php">List</a></li>
+                                    <li><a href="pou-add.php">Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Mock Test Paper</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="mock_test_paper_list.php">List</a></li>
+                                    <li><a href="mock_test_paper_add.php">Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Faculty</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="{{ route('admin.faculty.list') }}">List</a></li>
+                                    <li><a href="{{ route('admin.faculty.add') }}">Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>PDF</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="pdf_list.php">List</a></li>
+                                    <li><a href="pdf_add.php">Add</a></li>
+                                    <li><a href="pdf_authenticate.php">PDF Authenticate</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Push Notification</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="push_notification_list.php">List</a></li>
+                                    <li><a href="push_notification_add.php">Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Students Journal</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="students_journal_list.php">List</a></li>
+                                    <li><a href="students_journal_add.php">Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>MCQ</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="mcq_paper_list.php">Paper List</a></li>
+                                    <li><a href="mcq_paper_add.php">Paper Add</a></li>
+                                    <li><a href="mcq_count.php">MCQ Count</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Daily Quiz</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="daily_quiz_upload_list.php">List</a></li>
+                                    <li><a href="daily_quiz_upload_add.php">Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"> </i><a
+                                    class="sidebar-link sidebar-title link-nav" href="feedback.php">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Feedback</span></a>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Feeds</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="feeds_list.php">List</a></li>
+                                    <li><a href="feeds_add.php">Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Slider Banner</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="slider_list.php">List</a></li>
+                                    <li><a href="slider_add.php">Add</a></li>
+                                </ul>
+                            </li>
+                            <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
+                                <a class="sidebar-link sidebar-title" href="#">
+                                    <svg class="stroke-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}"></use>
+                                    </svg>
+                                    <svg class="fill-icon">
+                                        <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}"></use>
+                                    </svg>
+                                    <span>Webinar</span>
+                                </a>
+                                <ul class="sidebar-submenu">
+                                    <li><a href="webinar_list.php">List</a></li>
+                                    <li><a href="webinar_add.php">Add</a></li>
+                                </ul>
+                            </li>
 
                                 </ul>
                                 <!-- <li class="sidebar-list"><i class="fa fa-thumb-tack"></i><a
