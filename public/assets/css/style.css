@@ -49689,6 +49689,23 @@ html[dir=rtl] body.dark-only .page-wrapper .page-body-wrapper .page-body .card:n
   }
 }
 
+.btn-link.p-0.m-0 {
+    color: inherit !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.btn-link.p-0.m-0:hover {
+    color: inherit !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+}
+
+
 /**=====================
   5.9 Box-layout CSS Ends
 ==========================**/
