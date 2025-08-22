@@ -16,10 +16,20 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (Auth::guard('admin')->check() && Auth::guard('admin')->user()->status == 1) {
-            return $next($request);
+        // List of allowed guards/roles
+        $guards = ['superadmin', 'admin', 'esahayta', 'faculty', 'techsupport'];
+        foreach ($guards as $guard) {
+            if (Auth::guard($guard)->check() && Auth::guard($guard)->user()->is_public == 1) {
+                // Optionally, check for specific role if needed:
+                // if (in_array(Auth::guard($guard)->user()->role, $guards)) {
+                return $next($request);
+                // }
+            }
         }
-        Auth::guard('admin')->logout();
+        // Logout from all guards just in case
+        foreach ($guards as $guard) {
+            Auth::guard($guard)->logout();
+        }
         return redirect()->route('admin.login')->with('error', 'Please login first..!!');
     }
 }
