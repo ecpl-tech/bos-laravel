@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\LectureController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,4 +27,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => 'admin'], f
     Route::get('faculty-assign-paper/{id}', [FacultyController::class, 'assignPaper'])->name('faculty.assign.paper');
     Route::post('faculty-assign-paper-store/{id}', [FacultyController::class, 'assignPaperStore'])->name('faculty.assign.paper.store');
     Route::post('faculty-assign-paper-status/{id}', [FacultyController::class, 'assignPaperStatus'])->name('faculty.assign.paper.status');
+
+    Route::get('lecture/add', [LectureController::class, 'create'])->name('lecture.add');
+    Route::post('lecture/store', [LectureController::class, 'store'])->name('lecture.store');
+    Route::get('lecture/list', [LectureController::class, 'index'])->name('lecture.list');
+    Route::get('lecture/edit/{id}', [LectureController::class, 'edit'])->name('lecture.edit');
+    Route::post('lecture/update/{id}', [LectureController::class, 'update'])->name('lecture.update');
+    Route::get('lecture/destroy/{id}', [LectureController::class, 'destroy'])->name('lecture.destroy');
+    Route::post('lecture/status/{id}', [LectureController::class, 'status'])->name('lecture.status');
+
 });

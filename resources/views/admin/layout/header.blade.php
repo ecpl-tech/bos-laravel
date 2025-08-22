@@ -253,10 +253,8 @@
                                     <span>Lecture Details</span>
                                 </a>
                                 <ul class="sidebar-submenu">
-                                    <li><a href="add_lecture.php">Add Lecture</a></li>
-                                    <li><a href="live_class_list.php">Live Class List</a></li>
-                                    <li><a href="bfys_class_list.php">BFYS Class List</a></li>
-                                    <li><a href="revisionary_class_list.php">Revisionary Class List</a></li>
+                                    <li><a href="{{ route('admin.lecture.add') }}">Add Lecture</a></li>
+                                    <li><a href="{{ route('admin.lecture.list') }}">Lecture List</a></li>
                                 </ul>
                             </li>
                             <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
