@@ -20,8 +20,8 @@ return new class extends Migration {
                 ->comment('0=Inactive, 1=Active');
             $table->timestamps();
 
-            $table->foreign('faculty_id')->references('id')->on('faculty');
-            $table->foreign('paper_id')->references('id')->on('paper_details');
+            $table->foreign('faculty_id')->references('id')->on('faculty')->onDelete('cascade');
+            $table->foreign('paper_id')->references('id')->on('paper_details')->onDelete('cascade');
         });
     }
 

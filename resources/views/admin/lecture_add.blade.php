@@ -1,4 +1,5 @@
-<?php include 'header.php'; ?>
+@extends ('admin.layout.app')
+@section('main-section')
 <div class="page-body">
     <div class="container-fluid">
         <div class="page-title">
@@ -14,19 +15,43 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
+                        <form action="{{ route('admin.lecture.store') }}" method="POST">
+                        @csrf
                         <div class="form theme-form">
                             <div class="row">
-                                <div class="col-sm-6">
+                                <div class="col-sm-12">
                                     <div class="mb-3">
-                                        <label>Class Type :</label>
-                                        <select class="form-select btn-square" name="class_type">
-                                            <option value="">-- Select Class Type --</option>
-                                            <option value="live">Live Class</option>
-                                            <option value="bfys">BFYS Class</option>
-                                            <option value="revisionary">Revisionary Class</option>
-                                        </select>
+                                        <label>Session :</label>
+                                        <div class="col-sm-12 form-control btn-square d-flex">
+                                            
+                                            <div class="col-sm-3">
+                                                <div class="form-check radio radio-success mb-0 mt-1">
+                                                    <input class="form-check-input" id="live" type="radio"
+                                                        name="class_type" value="live">
+                                                    <label class="form-check-label mb-0 px-1"
+                                                    for="live">Live Class</label>
+                                            </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-check radio radio-success mb-0 mt-1">
+                                                    <input class="form-check-input" id="bfys" type="radio"
+                                                        name="class_type" value="bfys">
+                                                    <label class="form-check-label mb-0 px-1"
+                                                        for="bfys">BFYS Class</label>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-3">
+                                                <div class="form-check radio radio-success mb-0 mt-1">
+                                                    <input class="form-check-input" id="revisionary" type="radio"
+                                                        name="class_type" value="revisionary">
+                                                    <label class="form-check-label mb-0 px-1"
+                                                        for="revisionary">Revisionary Class</label>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
+
                                 <div class="col-sm-6">
                                     <div class="mb-3">
                                         <label>Course :</label>
@@ -38,45 +63,47 @@
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-4" id="DefaultPaper">
+                                <div class="col-sm-6" id="DefaultPaper">
+                                    <div class="mb-3">
+                                        <label>Paper Name :</label>
+                                        <input class="form-control btn-square" type="text" placeholder="Paper Name"
+                                            name="bfys_paper">
+                                    </div>
+                                </div>
+                                <div class="col-sm-6 paperList" id="FoundationPaper">
                                     <div class="mb-3">
                                         <label>Paper :</label>
                                         <select class="form-select btn-square" name="paper">
                                             <option value="">-- Select Paper --</option>
+                                            @foreach($papersByCourse['foundation'] as $foundation)
+                                                <option value="{{ $foundation['id'] }}">{{ $foundation['papername'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-4" id="FoundationPaper">
+                                <div class="col-sm-6 paperList" id="IntermediatePaper">
                                     <div class="mb-3">
                                         <label>Paper :</label>
                                         <select class="form-select btn-square" name="paper">
                                             <option value="">-- Select Paper --</option>
-                                            <option value="1">Paper 1</option>
+                                            @foreach($papersByCourse['intermediate'] as $intermediate)
+                                                <option value="{{ $intermediate['id'] }}">{{ $intermediate['papername'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-4" id="IntermediatePaper">
+                                <div class="col-sm-6 paperList" id="FinalPaper">
                                     <div class="mb-3">
                                         <label>Paper :</label>
                                         <select class="form-select btn-square" name="paper">
                                             <option value="">-- Select Paper --</option>
-                                            <option value="1">Paper 1</option>
-                                            <option value="2">Paper 2</option>
+                                            @foreach($papersByCourse['final'] as $final)
+                                                <option value="{{ $final['id'] }}">{{ $final['papername'] }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
-                                <div class="col-sm-4" id="FinalPaper">
-                                    <div class="mb-3">
-                                        <label>Paper :</label>
-                                        <select class="form-select btn-square" name="paper">
-                                            <option value="">-- Select Paper --</option>
-                                            <option value="1">Paper 1</option>
-                                            <option value="2">Paper 2</option>
-                                            <option value="3">Paper 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-sm-8">
+                                <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label>Topic :</label>
                                         <input class="form-control btn-square" type="text" placeholder="Topic"
@@ -133,12 +160,7 @@
                                         <label>Faculty Name :</label>
                                         <select class="form-select btn-square" name="faculty_id">
                                             <option value="">-- Select Section --</option>
-                                            <option value="1">CA Amit Bathia</option>
-                                            <option value="2">CA Ritu Chhatwani</option>
-                                            <option value="3">CA Sneha Juneja</option>
-                                            <option value="4">CA. Abhinay Gupta</option>
-                                            <option value="5">CA. Achal Jain</option>
-                                            <option value="6">CA. Aditya Kulkarni</option>
+                                            {{-- Faculty options will be dynamically populated by JS --}}
                                         </select>
                                     </div>
                                 </div>
@@ -159,50 +181,75 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <div class="text-end"><a class="btn btn-success me-3" href="#">Add</a>
-                                    </div>
+                                    <button type="submit" class="btn btn-success me-3 text-end">Add</button>
                                 </div>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<?php include 'footer.php'; ?>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
     $(document).ready(function() {
-        function announcement_type_toggleFields() {
-            var selectedType = $('input[name="announcement_type"]:checked').val();
-            document.getElementById('Inputtext').style.display = (selectedType === "text") ? 'block' : 'none';
-            document.getElementById('Inputpdf').style.display = (selectedType === "pdf") ? 'block' : 'none';
-        }
-        announcement_type_toggleFields();
-        $('input[name="announcement_type"]').on('change', function() {
-            announcement_type_toggleFields();
+        $('#FoundationPaper, #IntermediatePaper, #FinalPaper, #DefaultPaper').hide();
+
+        // Show course dropdown only if any session is selected
+        $('input[name="class_type"]').on('change', function() {
+            const classType = $('input[name="class_type"]:checked').val();
+            if (classType) {
+                $('select[name="course"]').closest('.mb-3').show();
+            } else {
+                $('select[name="course"]').closest('.mb-3').hide();
+                $('#FoundationPaper, #IntermediatePaper, #FinalPaper, #DefaultPaper').hide();
+            }
+            // If bfys, show only DefaultPaper
+            if (classType === 'bfys') {
+                $('#DefaultPaper').show();
+                $('#FoundationPaper, #IntermediatePaper, #FinalPaper').hide();
+            } else {
+                $('#DefaultPaper').hide();
+            }
         });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#FoundationPaper, #IntermediatePaper, #FinalPaper').hide();
-        $('#DefaultPaper').show();
+
+        // Show paper based on course, unless bfys session
         $('select[name="course"]').on('change', function() {
             const course = $(this).val();
-            $('#FoundationPaper, #IntermediatePaper, #FinalPaper').hide();
-            if (course === 'Foundation') {
-                $('#FoundationPaper').show();
-                $('#DefaultPaper').hide();
-            } else if (course === 'Intermediate') {
-                $('#IntermediatePaper').show();
-                $('#DefaultPaper').hide();
-            } else if (course === 'Final') {
-                $('#FinalPaper').show();
-                $('#DefaultPaper').hide();
-            } else {
+            const classType = $('input[name="class_type"]:checked').val();
+            $('#FoundationPaper, #IntermediatePaper, #FinalPaper, #DefaultPaper').hide();
+            if (classType === 'bfys') {
                 $('#DefaultPaper').show();
+            } else {
+                if (course == 'Foundation') {
+                    $('#FoundationPaper').show();
+                } else if (course == 'Intermediate') {
+                    $('#IntermediatePaper').show();
+                } else if (course == 'Final') {
+                    $('#FinalPaper').show();
+                }
+            }
+        });
+
+        // Hide course and paper fields initially
+        $('select[name="course"]').closest('.mb-3').hide();
+
+        // Dynamic faculty dropdown based on selected paper
+        var facultyByPaper = @json($facultyByPaper);
+        $('select[name="paper"]').on('change', function() {
+            var selectedPaperId = $(this).val();
+            var $facultySelect = $('select[name="faculty_id"]');
+            $facultySelect.empty();
+            $facultySelect.append('<option value="">-- Select Section --</option>');
+            if (facultyByPaper[selectedPaperId]) {
+                facultyByPaper[selectedPaperId].forEach(function(faculty) {
+                    $facultySelect.append('<option value="'+faculty.id+'">'+faculty.name+'</option>');
+                });
             }
         });
     });
 </script>
+@endsection
+
