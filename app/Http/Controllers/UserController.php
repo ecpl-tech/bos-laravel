@@ -2,17 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         return view('admin.login');
@@ -23,7 +19,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.user_add');
     }
 
     /**
@@ -31,15 +27,34 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'mobile' => 'required|string|max:15',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:4',
+            'role' => 'required|in:superadmin,admin,faculty,esahayta,techsupport',
+        ]);
+
+        $user = new User();
+        $user->name = $request->name;
+        $user->mobile = $request->mobile;
+        $user->email = $request->email;
+        $user->show_password = $request->password; // Store the plain password if needed
+        $user->password = Hash::make($request->password);
+        $user->role = $request->role;
+        $user->is_public = 1; // Assuming you want to set this to 1 by default
+        $user->save();
+
+    return redirect()->route(currentUser()->role . '.user.list')->with('success', 'User created successfully!');
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show()
     {
-        //
+        $users = User::all();
+        return view('admin.user_list', compact('users'));
     }
 
     /**
@@ -47,7 +62,8 @@ class AdminController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('admin.user_add', compact('user'));
     }
 
     /**
@@ -55,7 +71,26 @@ class AdminController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'mobile' => 'required|string|max:15',
+            'email' => 'required|email|unique:users,email,' . $id,
+            'password' => 'nullable|min:4',
+            'role' => 'required|in:superadmin,admin,faculty,esahayta,techsupport',
+        ]);
+
+        $user = User::findOrFail($id);
+        $user->name = $request->name;
+        $user->mobile = $request->mobile;
+        $user->email = $request->email;
+        if ($request->filled('password')) {
+            $user->show_password = $request->password; // Store the plain password if needed
+            $user->password = Hash::make($request->password);
+        }
+        $user->role = $request->role;
+        $user->save();
+
+        return redirect()->route(currentUser()->role . '.user.list')->with('success', 'User updated successfully!');
     }
 
     /**
@@ -63,7 +98,22 @@ class AdminController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route(currentUser()->role . '.user.list')->with('success', 'User deleted successfully!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function status(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+        $user->is_public = $user->is_public === '1' ? '0' : '1';
+        $user->save();
+
+        return redirect()->route(currentUser()->role . '.user.list')->with('success', 'User status updated successfully!');
     }
 
     public function loginauth(Request $request)
@@ -74,20 +124,6 @@ class AdminController extends Controller
         ]);
         $email = $request['email'];
         $password = $request->login['password'];
-
-        /* USING Admin Model
-        $user = Admin::where(['email' => $email, 'status' => '1', 'role' => 'admin'])->first();
-
-        if (!$user) {
-            return redirect()->back()->with('error', 'Invalid Credentials..!!');
-        } else {
-            if ($user && Hash::check($password, $user->password)) {
-                Auth::guard('admin')->login($user);
-                return redirect()->route('admin.dashboard')->with('success', 'Login Successful..!!');
-            } else {
-                return redirect()->back()->with('error', 'Invalid Credentials..!!');
-            }
-        }*/
 
         // Using User Model for multiple roles
         // $roles = ['superadmin', 'admin', 'esahayta', 'faculty', 'techsupport'];
@@ -104,6 +140,10 @@ class AdminController extends Controller
         // Use guard based on role
         $guard = $user->role;
         Auth::guard($guard)->login($user);
+
+        // Update last_login timestamp
+        $user->last_login = now();
+        $user->save();
 
         // Redirect based on role
         switch ($user->role) {
@@ -122,10 +162,12 @@ class AdminController extends Controller
                 return redirect()->back()->with('error', 'Role not allowed!');
         }
     }
+
     public function dashboard()
     {
         return view('admin.dashboard');
     }
+
     public function logout()
     {
         $guards = ['superadmin', 'admin', 'faculty', 'esahayta', 'techsupport'];
