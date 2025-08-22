@@ -41,7 +41,23 @@ return [
         ],
         'admin' => [
             'driver' => 'session',
-            'provider' => 'admins',
+            'provider' => 'users',
+        ],
+        'superadmin' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'esahayta' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'faculty' => [
+            'driver' => 'session',
+            'provider' => 'users',
+        ],
+        'techsupport' => [
+            'driver' => 'session',
+            'provider' => 'users',
         ],
     ],
 
@@ -67,10 +83,10 @@ return [
             'driver' => 'eloquent',
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
-        'admins' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Admin::class,
-        ],
+        // 'admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Models\Admin::class,
+        // ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

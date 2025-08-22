@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('region')->nullable();
             $table->string('mobile')->nullable();
             $table->string('email')->nullable();
-            $table->boolean('push_noti')->default(false);
+            $table->text('push_noti')->nullable();
             $table->ipAddress('ip')->nullable();
             $table->string('device')->nullable();
             $table->enum('is_public', ['1', '0'])->default('1')->comment('1: Active, 0: Inactive');
