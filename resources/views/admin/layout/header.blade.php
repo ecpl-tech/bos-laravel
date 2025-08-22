@@ -270,8 +270,8 @@
                                     <span>POU</span>
                                 </a>
                                 <ul class="sidebar-submenu">
-                                    <li><a href="pou-list.php">List</a></li>
-                                    <li><a href="pou-add.php">Add</a></li>
+                                    <li><a href="{{ route('admin.pou_user.index') }}">List</a></li>
+                                    <li><a href="{{ route('admin.pou_user.create') }}">Add</a></li>
                                 </ul>
                             </li>
                             <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -417,8 +417,8 @@
                                     <span>Slider Banner</span>
                                 </a>
                                 <ul class="sidebar-submenu">
-                                    <li><a href="slider_list.php">List</a></li>
-                                    <li><a href="slider_add.php">Add</a></li>
+                                    <li><a href="{{ route('admin.sliders.index') }}">List</a></li>
+                                    <li><a href="{{ route('admin.sliders.create') }}">Add</a></li>
                                 </ul>
                             </li>
                             <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
