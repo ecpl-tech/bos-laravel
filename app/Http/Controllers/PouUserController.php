@@ -44,7 +44,7 @@ class PouUserController extends Controller
             'show_password' => $request->password,
         ]);
 
-        return redirect()->route('admin.pou_user.index')->with('success', 'Pou user added successfully.');
+        return redirect()->route(currentUser()->role . '.pou_user.index')->with('success', 'Pou user added successfully.');
     }
 
     /**
@@ -85,7 +85,7 @@ class PouUserController extends Controller
             $user->show_password = $request->password;
         }
         $user->save();
-        return redirect()->route('admin.pou_user.index')->with('success', 'Pou User updated successfully.');
+        return redirect()->route(currentUser()->role . '.pou_user.index')->with('success', 'Pou User updated successfully.');
     }
 
     /**
@@ -95,7 +95,7 @@ class PouUserController extends Controller
     {
         $user = PouUser::findOrFail($id);
         $user->delete();
-        return redirect()->route('admin.pou_user.index')->with('success', 'Pou User deleted successfully.');
+        return redirect()->route(currentUser()->role . '.pou_user.index')->with('success', 'Pou User deleted successfully.');
     }
 
     public function togglePublic(Request $request, $id)

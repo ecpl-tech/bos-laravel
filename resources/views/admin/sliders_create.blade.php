@@ -4,8 +4,14 @@
         <div class="container-fluid">
             <div class="page-title">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <h4>Slider Create</h4>
+                    </div>
+                    <div class="col-6">
+                        <div class="justify-content-end d-flex">
+                            <a class="btn btn-primary" href="{{ route(currentUser()->role . '.sliders.index') }}">
+                                <i class="fa fa-list"></i> Slider List</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -15,8 +21,8 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form id="sliderForm" action="{{ route('admin.sliders.store') }}" method="post"
-                                enctype="multipart/form-data">
+                            <form id="sliderForm" action="{{ route(currentUser()->role . '.sliders.store') }}"
+                                method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="form theme-form">
                                     <div class="row">

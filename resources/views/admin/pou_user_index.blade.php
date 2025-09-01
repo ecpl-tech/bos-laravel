@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-6">
                         <div class="justify-content-end d-flex">
-                            <a class="btn btn-primary" href="{{ route('admin.pou_user.create') }}">
+                            <a class="btn btn-primary" href="{{ route(currentUser()->role . '.pou_user.create') }}">
                                 <i class="fa fa-plus"></i> Add Pou</a>
                         </div>
                     </div>
@@ -51,7 +51,8 @@
                                                 <td>{{ $value->show_password }}</td>
                                                 <td>{{ $value->profile }}</td>
                                                 <td>
-                                                    <form action="{{ route('admin.pou_user.is_public', $value->id) }}"
+                                                    <form
+                                                        action="{{ route(currentUser()->role . '.pou_user.is_public', $value->id) }}"
                                                         method="post">
                                                         @csrf
                                                         <div class="media-body switch-md icon-state">
@@ -67,12 +68,12 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li class="edit">
-                                                            <a href="{{ route('admin.pou_user.edit', $value->id) }}"
+                                                            <a href="{{ route(currentUser()->role . '.pou_user.edit', $value->id) }}"
                                                                 class="form-actions"><i data-feather="edit"></i></a>
                                                         </li>
                                                         <li class="delete">
                                                             <form
-                                                                action="{{ route('admin.pou_user.destroy', $value->id) }}"
+                                                                action="{{ route(currentUser()->role . '.pou_user.destroy', $value->id) }}"
                                                                 method="POST" style="display:inline">
                                                                 @csrf
                                                                 @method('DELETE')

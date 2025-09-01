@@ -21,10 +21,12 @@ class RoleMiddleware
     public function handle(Request $request, Closure $next, ...$roles)
     {
         $guards = ['superadmin', 'admin', 'esahayta', 'faculty', 'techsupport', null]; // null for default guard
+
+
+
         foreach ($guards as $guard) {
             $user = auth($guard)->user();
             if ($user && method_exists($user, 'hasRole')) {
-                // If user is authenticated but does not have the required role, log out and redirect
                 if (!$user->hasRole($roles)) {
                     auth($guard)->logout();
                     if (session()->has('_token')) {
