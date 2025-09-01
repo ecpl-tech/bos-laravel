@@ -9,7 +9,7 @@
                     </div>
                     <div class="col-6">
                         <div class="justify-content-end d-flex">
-                            <a class="btn btn-primary" href="{{ route('admin.sliders.create') }}">
+                            <a class="btn btn-primary" href="{{ route(currentUser()->role . '.sliders.create') }}">
                                 <i class="fa fa-plus"></i> Add Slider</a>
                         </div>
                     </div>
@@ -49,7 +49,8 @@
                                                 <td>{{ $slider->created_at->format('d-m-Y H:i:s') }}</td>
                                                 <td>{{ $slider->level }}</td>
                                                 <td>
-                                                    <form action="{{ route('admin.sliders.is_public', $slider->id) }}"
+                                                    <form
+                                                        action="{{ route(currentUser()->role . '.sliders.is_public', $slider->id) }}"
                                                         method="post">
                                                         @csrf
                                                         <div class="media-body switch-md icon-state">
@@ -65,11 +66,12 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li class="edit">
-                                                            <a href="{{ route('admin.sliders.edit', $slider->id) }}"
+                                                            <a href="{{ route(currentUser()->role . '.sliders.edit', $slider->id) }}"
                                                                 class="form-actions"><i data-feather="edit"></i></a>
                                                         </li>
                                                         <li class="delete">
-                                                            <form action="{{ route('admin.sliders.destroy', $slider->id) }}"
+                                                            <form
+                                                                action="{{ route(currentUser()->role . '.sliders.destroy', $slider->id) }}"
                                                                 method="POST" style="display:inline">
                                                                 @csrf
                                                                 @method('DELETE')

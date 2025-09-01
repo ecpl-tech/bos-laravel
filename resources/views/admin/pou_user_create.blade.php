@@ -4,8 +4,14 @@
         <div class="container-fluid">
             <div class="page-title">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <h4>Pou User Add</h4>
+                    </div>
+                    <div class="col-6">
+                        <div class="justify-content-end d-flex">
+                            <a class="btn btn-primary" href="{{ route(currentUser()->role . '.pou_user.index') }}">
+                                <i class="fa fa-list"></i> Pou List</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -15,7 +21,7 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.pou_user.store') }}" method="POST">
+                            <form action="{{ route(currentUser()->role . '.pou_user.store') }}" method="POST">
                                 @csrf
                                 <div class="form theme-form">
                                     <div class="row">

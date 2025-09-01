@@ -16,6 +16,7 @@ class AdminAuth
      */
     public function handle(Request $request, Closure $next): Response
     {
+        
         // List of allowed guards/roles
         $guards = ['superadmin', 'admin', 'esahayta', 'faculty', 'techsupport'];
         foreach ($guards as $guard) {

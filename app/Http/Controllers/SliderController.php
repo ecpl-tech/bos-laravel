@@ -52,7 +52,7 @@ class SliderController extends Controller
             'is_public' => $request->is_public ? '1' : '0',
         ]);
 
-        return redirect()->route('admin.sliders.index')->with('success', 'Slider Added Successfully !');
+        return redirect()->route(currentUser()->role . '.sliders.index')->with('success', 'Slider Added Successfully !');
     }
 
     /**
@@ -100,7 +100,7 @@ class SliderController extends Controller
             'description' => $request->description ?? null,
             'is_public' => $request->is_public ? '1' : '0',
         ]);
-        return redirect()->route('admin.sliders.index')->with('success', 'Slider updated successfully.');
+        return redirect()->route(currentUser()->role . '.sliders.index')->with('success', 'Slider updated successfully.');
     }
 
     /**
@@ -110,7 +110,7 @@ class SliderController extends Controller
     {
         $slider = Slider::findOrFail($id);
         $slider->delete();
-        return redirect()->route('admin.sliders.index')->with('success', 'Slider deleted successfully.');
+        return redirect()->route(currentUser()->role . '.sliders.index')->with('success', 'Slider deleted successfully.');
     }
 
     public function togglePublic(Request $request, $id)

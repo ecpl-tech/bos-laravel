@@ -4,8 +4,14 @@
         <div class="container-fluid">
             <div class="page-title">
                 <div class="row">
-                    <div class="col-12">
+                    <div class="col-6">
                         <h4>Slider Edit</h4>
+                    </div>
+                    <div class="col-6">
+                        <div class="justify-content-end d-flex">
+                            <a class="btn btn-primary" href="{{ route(currentUser()->role . '.sliders.index') }}">
+                                <i class="fa fa-list"></i> Slider List</a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -15,11 +21,11 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form id="sliderForm" action="{{ route('admin.sliders.update', $slider->id) }}" method="post"
-                                enctype="multipart/form-data">
+                            <form id="sliderForm" action="{{ route(currentUser()->role . '.sliders.update', $slider->id) }}"
+                                method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
-                                <div class="form theme-form">   
+                                <div class="form theme-form">
                                     <div class="row">
                                         <div class="col-sm-4">
                                             <div class="mb-3">
@@ -37,10 +43,16 @@
                                                 <label>Level :</label>
                                                 <select class="form-select btn-square" name="level">
                                                     <option value="">Please Select</option>
-                                                    <option value="all" {{ $slider->level == 'all' ? 'selected' : '' }}>All</option>
-                                                    <option value="foundation" {{ $slider->level == 'foundation' ? 'selected' : '' }}>Foundation</option>
-                                                    <option value="intermediate" {{ $slider->level == 'intermediate' ? 'selected' : '' }}>Intermediate</option>
-                                                    <option value="final" {{ $slider->level == 'final' ? 'selected' : '' }}>Final</option>
+                                                    <option value="all" {{ $slider->level == 'all' ? 'selected' : '' }}>
+                                                        All</option>
+                                                    <option value="foundation"
+                                                        {{ $slider->level == 'foundation' ? 'selected' : '' }}>Foundation
+                                                    </option>
+                                                    <option value="intermediate"
+                                                        {{ $slider->level == 'intermediate' ? 'selected' : '' }}>
+                                                        Intermediate</option>
+                                                    <option value="final"
+                                                        {{ $slider->level == 'final' ? 'selected' : '' }}>Final</option>
                                                 </select>
                                                 @error('level')
                                                     <span class="text-danger f-w-500">{{ $message }}</span>
@@ -54,7 +66,8 @@
                                                     <div class="col-sm-4">
                                                         <div class="form-check radio radio-success mb-0 mt-1">
                                                             <input class="form-check-input" id="active" type="radio"
-                                                                name="is_public" value="1" {{ $slider->is_public == '1' ? 'checked' : '' }}>
+                                                                name="is_public" value="1"
+                                                                {{ $slider->is_public == '1' ? 'checked' : '' }}>
                                                             <label class="form-check-label mb-0 px-1"
                                                                 for="active">Active</label>
                                                         </div>
@@ -62,7 +75,8 @@
                                                     <div class="col-sm-4">
                                                         <div class="form-check radio radio-success mb-0 mt-1">
                                                             <input class="form-check-input" id="inactive" type="radio"
-                                                                name="is_public" value="0" {{ $slider->is_public == '0' ? 'checked' : '' }}>
+                                                                name="is_public" value="0"
+                                                                {{ $slider->is_public == '0' ? 'checked' : '' }}>
                                                             <label class="form-check-label mb-0 px-1"
                                                                 for="inactive">Inactive</label>
                                                         </div>

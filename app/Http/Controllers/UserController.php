@@ -45,7 +45,7 @@ class UserController extends Controller
         $user->is_public = 1; // Assuming you want to set this to 1 by default
         $user->save();
 
-    return redirect()->route(currentUser()->role . '.user.list')->with('success', 'User created successfully!');
+        return redirect()->route(currentUser()->role . '.user.list')->with('success', 'User created successfully!');
     }
 
     /**
