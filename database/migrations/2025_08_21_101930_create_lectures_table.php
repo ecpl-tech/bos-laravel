@@ -16,11 +16,12 @@ return new class extends Migration
             $table->string('class');
             $table->string('course');
             $table->foreignId('paper_id')->constrained('paper_details');
+            $table->text('bfys_paper')->nullable();
             $table->foreignId('faculty_id')->constrained('faculty');
             $table->string('topic');
             $table->string('session');
             $table->date('date');
-            $table->time('time');
+            $table->string('time');
             $table->string('video_url')->nullable();
             $table->string('zoom_link')->nullable();
             $table->enum('is_public', ['1', '0'])->default('1')->comment('1=active, 0=inactive');

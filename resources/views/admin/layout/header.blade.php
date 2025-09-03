@@ -294,10 +294,10 @@
                                         <span>Lecture Details</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="add_lecture.php">Add Lecture</a></li>
-                                        <li><a href="live_class_list.php">Live Class List</a></li>
-                                        <li><a href="bfys_class_list.php">BFYS Class List</a></li>
-                                        <li><a href="revisionary_class_list.php">Revisionary Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.add') }}">Add Lecture</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Live Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">BFYS Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Revisionary Class List</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -349,8 +349,8 @@
                                         <span>Faculty</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="{{ route('admin.faculty.list') }}">List</a></li>
-                                        <li><a href="{{ route('admin.faculty.add') }}">Add</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.faculty.list') }}">List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.faculty.add') }}">Add</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>

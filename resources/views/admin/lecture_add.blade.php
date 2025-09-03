@@ -15,7 +15,7 @@
             <div class="col-sm-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{ route('admin.lecture.store') }}" method="POST">
+                        <form action="{{ route(currentUser()->role . '.lecture.store') }}" method="POST">
                         @csrf
                         <div class="form theme-form">
                             <div class="row">
@@ -49,6 +49,9 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @error('class_type')
+                                            <span class="text-danger f-w-500">{{ $message }}</span>
+                                        @enderror
                                     </div>
                                 </div>
 
@@ -62,6 +65,9 @@
                                             <option value="Final">Final</option>
                                         </select>
                                     </div>
+                                    @error('course')
+                                        <span class="text-danger f-w-500">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <div class="col-sm-6" id="DefaultPaper">
                                     <div class="mb-3">
@@ -73,7 +79,7 @@
                                 <div class="col-sm-6 paperList" id="FoundationPaper">
                                     <div class="mb-3">
                                         <label>Paper :</label>
-                                        <select class="form-select btn-square" name="paper">
+                                        <select class="form-select btn-square" name="paper[foundation][]">
                                             <option value="">-- Select Paper --</option>
                                             @foreach($papersByCourse['foundation'] as $foundation)
                                                 <option value="{{ $foundation['id'] }}">{{ $foundation['papername'] }}</option>
@@ -84,7 +90,7 @@
                                 <div class="col-sm-6 paperList" id="IntermediatePaper">
                                     <div class="mb-3">
                                         <label>Paper :</label>
-                                        <select class="form-select btn-square" name="paper">
+                                        <select class="form-select btn-square" name="paper[intermediate][]">
                                             <option value="">-- Select Paper --</option>
                                             @foreach($papersByCourse['intermediate'] as $intermediate)
                                                 <option value="{{ $intermediate['id'] }}">{{ $intermediate['papername'] }}</option>
@@ -95,7 +101,7 @@
                                 <div class="col-sm-6 paperList" id="FinalPaper">
                                     <div class="mb-3">
                                         <label>Paper :</label>
-                                        <select class="form-select btn-square" name="paper">
+                                        <select class="form-select btn-square" name="paper[final][]">
                                             <option value="">-- Select Paper --</option>
                                             @foreach($papersByCourse['final'] as $final)
                                                 <option value="{{ $final['id'] }}">{{ $final['papername'] }}</option>
@@ -103,6 +109,9 @@
                                         </select>
                                     </div>
                                 </div>
+                                @error('paper')
+                                    <span class="text-danger f-w-500">{{ $message }}</span>
+                                @enderror
                                 <div class="col-sm-12">
                                     <div class="mb-3">
                                         <label>Topic :</label>
@@ -117,7 +126,7 @@
                                             <div class="col-sm-4">
                                                 <div class="form-check radio radio-success mb-0 mt-1">
                                                     <input class="form-check-input" id="Morning" type="radio"
-                                                        name="session" value="morning">
+                                                        name="session_time" value="morning">
                                                     <label class="form-check-label mb-0 px-1"
                                                         for="Morning">Morning</label>
                                                 </div>
@@ -125,7 +134,7 @@
                                             <div class="col-sm-4">
                                                 <div class="form-check radio radio-success mb-0 mt-1">
                                                     <input class="form-check-input" id="Afternoon" type="radio"
-                                                        name="session" value="afternoon">
+                                                        name="session_time" value="afternoon">
                                                     <label class="form-check-label mb-0 px-1"
                                                         for="Afternoon">Afternoon</label>
                                                 </div>
@@ -133,7 +142,7 @@
                                             <div class="col-sm-4">
                                                 <div class="form-check radio radio-success mb-0 mt-1">
                                                     <input class="form-check-input" id="Evening" type="radio"
-                                                        name="session" value="evening">
+                                                        name="session_time" value="evening">
                                                     <label class="form-check-label mb-0 px-1"
                                                         for="Evening">Evening</label>
                                                 </div>
@@ -145,14 +154,14 @@
                                     <div class="mb-3">
                                         <label>Date :</label>
                                         <input class="form-control btn-square" type="date" placeholder="Date"
-                                            name="topic">
+                                            name="date">
                                     </div>
                                 </div>
                                 <div class="col-sm-3">
                                     <div class="mb-3">
                                         <label>Time :</label>
-                                        <input class="form-control btn-square" type="time" placeholder="Time"
-                                            name="topic">
+                                        <input class="form-control btn-square" type="text" placeholder="Time"
+                                            name="time">
                                     </div>
                                 </div>
                                 <div class="col-sm-6">
@@ -181,7 +190,7 @@
                             </div>
                             <div class="row">
                                 <div class="col">
-                                    <button type="submit" class="btn btn-success me-3 text-end">Add</button>
+                                    <button type="submit" name="submit" class="btn btn-success me-3 text-end">Add</button>
                                 </div>
                             </div>
                         </div>
@@ -219,7 +228,12 @@
         $('select[name="course"]').on('change', function() {
             const course = $(this).val();
             const classType = $('input[name="class_type"]:checked').val();
+            // Hide all paper dropdowns
             $('#FoundationPaper, #IntermediatePaper, #FinalPaper, #DefaultPaper').hide();
+            // Reset all paper dropdowns
+            $('#FoundationPaper select, #IntermediatePaper select, #FinalPaper select').val('');
+            // Also reset faculty dropdown
+            $('select[name="faculty_id"]').empty().append('<option value="">-- Select Section --</option>');
             if (classType === 'bfys') {
                 $('#DefaultPaper').show();
             } else {
@@ -238,7 +252,7 @@
 
         // Dynamic faculty dropdown based on selected paper
         var facultyByPaper = @json($facultyByPaper);
-        $('select[name="paper"]').on('change', function() {
+        $('select[name^="paper["]').on('change', function() {
             var selectedPaperId = $(this).val();
             var $facultySelect = $('select[name="faculty_id"]');
             $facultySelect.empty();
