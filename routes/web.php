@@ -9,7 +9,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('login', [UserController::class, 'index'])->name('admin.login');
+Route::get('bos-icai', [UserController::class, 'index'])->name('admin.login');
 Route::post('admin/loginauth', [UserController::class, 'loginauth'])->name('admin.loginauth');
 Route::get('logout', [UserController::class, 'logout'])->name('logout');
 
