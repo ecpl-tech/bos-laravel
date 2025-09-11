@@ -7,7 +7,7 @@
                     <div class="col-12">
                         <h4>Faculty Edit</h4>
                     </div>
-                </div>
+                </div> 
             </div>
         </div>
         <div class="container-fluid">

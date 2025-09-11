@@ -3,6 +3,11 @@
 // use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\LectureController;
+use App\Http\Controllers\PouUserController;
+use App\Http\Controllers\SliderController;
+use App\Http\Controllers\MockTestPaperController;
+use App\Http\Controllers\MockTestPaperDetailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -16,7 +21,7 @@ Route::get('logout', [UserController::class, 'logout'])->name('logout');
 // Admin and Superadmin routes
 Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => ['role:superadmin']], function () {
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
-    
+
     // Admin management routes
     Route::get('user-add', [UserController::class, 'create'])->name('user.add');
     Route::post('user-store', [UserController::class, 'store'])->name('user.store');
@@ -34,10 +39,50 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::post('faculty-update/{id}', [FacultyController::class, 'update'])->name('faculty.update');
     Route::get('faculty-destroy/{id}', [FacultyController::class, 'destroy'])->name('faculty.destroy');
     Route::post('faculty-status/{id}', [FacultyController::class, 'status'])->name('faculty.status');
-    
+
+    Route::get('/pou_user', [PouUserController::class, 'index'])->name('pou_user.index');
+    Route::get('/pou_user/create', [PouUserController::class, 'create'])->name('pou_user.create');
+    Route::post('/pou_user', [PouUserController::class, 'store'])->name('pou_user.store');
+    Route::get('/pou_user/{id}/edit', [PouUserController::class, 'edit'])->name('pou_user.edit');
+    Route::put('/pou_user/{id}', [PouUserController::class, 'update'])->name('pou_user.update');
+    Route::post('/pou_user/{id}/is_public', [PouUserController::class, 'togglePublic'])->name('pou_user.is_public');
+    Route::delete('/pou_user/{id}', [PouUserController::class, 'destroy'])->name('pou_user.destroy');
+
+    Route::get('sliders', [SliderController::class, 'index'])->name('sliders.index');
+    Route::get('sliders/create', [SliderController::class, 'create'])->name('sliders.create');
+    Route::post('sliders', [SliderController::class, 'store'])->name('sliders.store');
+    Route::get('sliders/{id}', [SliderController::class, 'show'])->name('sliders.show');
+    Route::get('sliders/{id}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
+    Route::put('sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
+    Route::post('sliders/{id}/is_public', [SliderController::class, 'togglePublic'])->name('sliders.is_public');
+    Route::delete('sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+
     Route::get('faculty-assign-paper/{id}', [FacultyController::class, 'assignPaper'])->name('faculty.assign.paper');
     Route::post('faculty-assign-paper-store/{id}', [FacultyController::class, 'assignPaperStore'])->name('faculty.assign.paper.store');
     Route::post('faculty-assign-paper-status/{id}', [FacultyController::class, 'assignPaperStatus'])->name('faculty.assign.paper.status');
+
+    Route::get('lecture/add', [LectureController::class, 'create'])->name('lecture.add');
+    Route::post('lecture/store', [LectureController::class, 'store'])->name('lecture.store');
+    Route::get('lecture/list', [LectureController::class, 'index'])->name('lecture.list');
+    Route::get('lecture/edit/{id}', [LectureController::class, 'edit'])->name('lecture.edit');
+    Route::post('lecture/update/{id}', [LectureController::class, 'update'])->name('lecture.update');
+    Route::get('lecture/destroy/{id}', [LectureController::class, 'destroy'])->name('lecture.destroy');
+    Route::post('lecture/status/{id}', [LectureController::class, 'status'])->name('lecture.status');
+
+    Route::get('mock-test-papers/', [MockTestPaperController::class, 'index'])->name('mock_test_papers.index');
+    Route::get('mock-test-papers/create', [MockTestPaperController::class, 'create'])->name('mock_test_papers.create');
+    Route::post('mock-test-papers', [MockTestPaperController::class, 'store'])->name('mock_test_papers.store');
+    Route::post('mock-test-papers/{id}/is_public', [MockTestPaperController::class, 'togglePublic'])->name('mock_test_papers.is_public');
+    Route::get('mock-test-papers/{id}/edit', [MockTestPaperController::class, 'edit'])->name('mock_test_papers.edit');
+    Route::post('mock-test-papers/{id}', [MockTestPaperController::class, 'update'])->name('mock_test_papers.update');
+    Route::get('mock-test-papers/{id}', [MockTestPaperController::class, 'destroy'])->name('mock_test_papers.destroy');
+
+    Route::get('mock-test-paper-details/{course}/{mtp_id}', [MockTestPaperDetailController::class, 'index'])->name('mock_test_paper_details.index');
+    Route::post('mock-test-papers-details/store', [MockTestPaperDetailController::class, 'store'])->name('mock_test_paper_details.store');
+    Route::get('mock-test-papers-details/{course}/{mtp_id}/{id}/edit', [MockTestPaperDetailController::class, 'edit'])->name('mock_test_paper_details.edit');
+    Route::post('mock-test-papers-details/{id}', [MockTestPaperDetailController::class, 'update'])->name('mock_test_paper_details.update');
+    Route::get('mock-test-papers-details/destroy/{fileType}/{id}', [MockTestPaperDetailController::class, 'destroy'])->name('mock_test_paper_details.destroy');
+    Route::get('mock-test-papers-details/delete/{id}', [MockTestPaperDetailController::class, 'delete'])->name('mock_test_paper_details.delete');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
@@ -50,6 +95,36 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::post('faculty-update/{id}', [FacultyController::class, 'update'])->name('faculty.update');
     Route::get('faculty-destroy/{id}', [FacultyController::class, 'destroy'])->name('faculty.destroy');
     Route::post('faculty-status/{id}', [FacultyController::class, 'status'])->name('faculty.status');
+
+    Route::get('/pou_user', [PouUserController::class, 'index'])->name('pou_user.index');
+    Route::get('/pou_user/create', [PouUserController::class, 'create'])->name('pou_user.create');
+    Route::post('/pou_user', [PouUserController::class, 'store'])->name('pou_user.store');
+    Route::get('/pou_user/{id}/edit', [PouUserController::class, 'edit'])->name('pou_user.edit');
+    Route::put('/pou_user/{id}', [PouUserController::class, 'update'])->name('pou_user.update');
+    Route::post('/pou_user/{id}/is_public', [PouUserController::class, 'togglePublic'])->name('pou_user.is_public');
+    Route::delete('/pou_user/{id}', [PouUserController::class, 'destroy'])->name('pou_user.destroy');
+
+
+    Route::get('sliders', [SliderController::class, 'index'])->name('sliders.index');
+    Route::get('sliders/create', [SliderController::class, 'create'])->name('sliders.create');
+    Route::post('sliders', [SliderController::class, 'store'])->name('sliders.store');
+    Route::get('sliders/{id}', [SliderController::class, 'show'])->name('sliders.show');
+    Route::get('sliders/{id}/edit', [SliderController::class, 'edit'])->name('sliders.edit');
+    Route::put('sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
+    Route::post('sliders/{id}/is_public', [SliderController::class, 'togglePublic'])->name('sliders.is_public');
+    Route::delete('sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+
+    Route::get('faculty-assign-paper/{id}', [FacultyController::class, 'assignPaper'])->name('faculty.assign.paper');
+    Route::post('faculty-assign-paper-store/{id}', [FacultyController::class, 'assignPaperStore'])->name('faculty.assign.paper.store');
+    Route::post('faculty-assign-paper-status/{id}', [FacultyController::class, 'assignPaperStatus'])->name('faculty.assign.paper.status');
+
+    Route::get('lecture/add', [LectureController::class, 'create'])->name('lecture.add');
+    Route::post('lecture/store', [LectureController::class, 'store'])->name('lecture.store');
+    Route::get('lecture/list', [LectureController::class, 'index'])->name('lecture.list');
+    Route::get('lecture/edit/{id}', [LectureController::class, 'edit'])->name('lecture.edit');
+    Route::post('lecture/update/{id}', [LectureController::class, 'update'])->name('lecture.update');
+    Route::get('lecture/destroy/{id}', [LectureController::class, 'destroy'])->name('lecture.destroy');
+    Route::post('lecture/status/{id}', [LectureController::class, 'status'])->name('lecture.status');
 });
 
 // Faculty routes
@@ -63,7 +138,6 @@ Route::group(['prefix' => 'faculty', 'as' => 'faculty.', 'middleware' => ['role:
 Route::group(['prefix' => 'techsupport', 'as' => 'techsupport.', 'middleware' => ['role:techsupport']], function () {
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 });
-
 
 // Esahayta routes
 Route::group(['prefix' => 'esahayta', 'as' => 'esahayta.', 'middleware' => ['role:esahayta']], function () {

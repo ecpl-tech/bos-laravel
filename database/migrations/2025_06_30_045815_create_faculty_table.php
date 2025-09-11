@@ -18,7 +18,7 @@ return new class extends Migration {
             $table->string('password');
             $table->string('show_password')->nullable();
             $table
-                ->enum('status', ['0', '1'])
+                ->enum('is_public', ['0', '1'])
                 ->nullable()
                 ->comment('0=Inactive, 1=Active');
             $table->timestamps();

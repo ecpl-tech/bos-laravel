@@ -15,7 +15,8 @@
                 <div class="col-sm-12">
                     <div class="card">
                         <div class="card-body">
-                            <form action="{{ route('admin.faculty.store') }}" method="POST">
+                            
+                            <form action="{{ route(currentUser()->role . '.faculty.store') }}" method="POST">
                                 @csrf
                                 <div class="form theme-form">
                                     <div class="row">

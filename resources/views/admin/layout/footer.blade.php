@@ -129,6 +129,9 @@
           theme: "snow",
           placeholder: "Enter your messages...",
       });
+      document.querySelector("#sliderForm").addEventListener("submit", function() {
+          document.querySelector("#description").value = editor.root.innerHTML;
+      });
   </script>
 
   <!-- table -->
