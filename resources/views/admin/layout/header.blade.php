@@ -248,11 +248,11 @@
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                                     <a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-project') }}">
                                             </use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-project') }}">
                                             </use>
                                         </svg>
                                         <span>Announcement</span>
@@ -266,11 +266,11 @@
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                                     <a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-email') }}">
                                             </use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-email') }}">
                                             </use>
                                         </svg>
                                         <span>Subscribers</span>
@@ -284,30 +284,30 @@
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                                     <a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-learning') }}">
                                             </use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-learning') }}">
                                             </use>
                                         </svg>
                                         <span>Lecture Details</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="add_lecture.php">Add Lecture</a></li>
-                                        <li><a href="live_class_list.php">Live Class List</a></li>
-                                        <li><a href="bfys_class_list.php">BFYS Class List</a></li>
-                                        <li><a href="revisionary_class_list.php">Revisionary Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.add') }}">Add Lecture</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Live Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">BFYS Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Revisionary Class List</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                                     <a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-user') }}">
                                             </use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-user') }}">
                                             </use>
                                         </svg>
                                         <span>POU</span>
@@ -322,18 +322,18 @@
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                                     <a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-knowledgebase') }}">
                                             </use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-home') }}">
+                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-knowledgebase') }}">
                                             </use>
                                         </svg>
                                         <span>Mock Test Paper</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="mock_test_paper_list.php">List</a></li>
-                                        <li><a href="mock_test_paper_add.php">Add</a></li>
+                                        <li><a href="{{ route(currentUser()->role.'.mock_test_papers.index') }}">List</a></li>
+                                        <li><a href="{{ route(currentUser()->role.'.mock_test_papers.create') }}">Add</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -349,8 +349,8 @@
                                         <span>Faculty</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="{{ route('admin.faculty.list') }}">List</a></li>
-                                        <li><a href="{{ route('admin.faculty.add') }}">Add</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.faculty.list') }}">List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.faculty.add') }}">Add</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>

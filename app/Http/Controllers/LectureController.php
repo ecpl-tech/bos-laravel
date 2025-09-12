@@ -45,7 +45,6 @@ class LectureController extends Controller
             });
         }
         unset($facultyList);
-
         return view('admin.lecture_add', compact('papersByCourse', 'facultyByPaper'));
     }
 
@@ -54,36 +53,55 @@ class LectureController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'class' => 'required',
-            'course' => 'required',
+        /*$validated = $request->validate([
+            'class_type' => 'required|string',
+            'course' => 'required|string',
             'paper_id' => 'required|exists:paper_details,id',
-            'faculty_id.*' => 'exists:faculties,id',
+            'bfys_paper' => 'nullable|string',
+            'faculty_id' => 'required|exists:faculty,id',
             'topic' => 'required|string|max:255',
-            'session' => 'required',
+            'session_time' => 'required|string',
             'date' => 'required|date',
             'time' => 'required',
-        ]);
+            'video_url' => 'nullable|string',
+            'zoom_link' => 'nullable|string',
+        ]);*/
 
-        // Create the lecture
-        $lecture = new Lecture();
-        $lecture->class = $validated['class'];
-        $lecture->course = $validated['course'];
-        $lecture->paper_id = $validated['paper_id'];
-        $lecture->faculty_id = $validated['faculty_id'];
-        $lecture->topic = $validated['topic'];
-        $lecture->session = $validated['session'];
-        $lecture->date = $validated['date'];
-        $lecture->time = $validated['time'];
-        $lecture->video_url = $validated['video_url'];
-        $lecture->zoom_link = $validated['zoom_link'];
-        $lecture->status = $validated['status'];
+        $validated = $request->validate([
+
+        ]);
+        //dd($request['paper']['foundation']);
+        //dd($request->all());
+        $lecture = new \App\Models\Lecture();
+        $lecture->class = $request['class_type'];
+        $lecture->course = $request['course'];
+        $selectedPapers = collect($request->input('paper', []))
+        ->only(['foundation', 'intermediate', 'final'])
+        ->map(function ($papers) {
+            return array_filter($papers); // remove empty "" values inside
+        })
+        ->filter(function ($papers) {
+                return !empty($papers); // remove empty arrays
+            });
+        $paper_id = collect($selectedPapers)->flatten()->first();
+        $lecture->paper_id = $paper_id;
+
+
+        $lecture->bfys_paper = ($request['class_type'] === 'bfys') ? ($request['bfys_paper'] ?? null) : null;
+        $lecture->faculty_id = $request['faculty_id'];
+        $lecture->topic = $request['topic'];
+        $lecture->session = $request['session_time'];
+        $lecture->date = $request['date'];
+        $lecture->time = $request['time'];
+        $lecture->video_url = $request['video_url'] ?? null;
+        $lecture->zoom_link = $request['zoom_link'] ?? null;
         $lecture->save();
 
+        return redirect()->route(currentUser()->role . '.lecture.list')->with('success', 'Lecture created successfully.');
         // Attach faculty to the lecture
-        $lecture->faculties()->attach($validated['faculty_ids']);
+        //$lecture->faculties()->attach($validated['faculty_ids']);
 
-        return redirect()->route('lectures.index')->with('success', 'Lecture created successfully.');
+        //return redirect()->route('lectures.index')->with('success', 'Lecture created successfully.');
     }
 
     /**

@@ -8,6 +8,8 @@ use App\Http\Controllers\LectureController;
 use App\Http\Controllers\PouUserController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\StudentJournalController;
+use App\Http\Controllers\MockTestPaperController;
+use App\Http\Controllers\MockTestPaperDetailController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -68,6 +70,21 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::post('lecture/update/{id}', [LectureController::class, 'update'])->name('lecture.update');
     Route::get('lecture/destroy/{id}', [LectureController::class, 'destroy'])->name('lecture.destroy');
     Route::post('lecture/status/{id}', [LectureController::class, 'status'])->name('lecture.status');
+
+    Route::get('mock-test-papers/', [MockTestPaperController::class, 'index'])->name('mock_test_papers.index');
+    Route::get('mock-test-papers/create', [MockTestPaperController::class, 'create'])->name('mock_test_papers.create');
+    Route::post('mock-test-papers', [MockTestPaperController::class, 'store'])->name('mock_test_papers.store');
+    Route::post('mock-test-papers/{id}/is_public', [MockTestPaperController::class, 'togglePublic'])->name('mock_test_papers.is_public');
+    Route::get('mock-test-papers/{id}/edit', [MockTestPaperController::class, 'edit'])->name('mock_test_papers.edit');
+    Route::post('mock-test-papers/{id}', [MockTestPaperController::class, 'update'])->name('mock_test_papers.update');
+    Route::get('mock-test-papers/{id}', [MockTestPaperController::class, 'destroy'])->name('mock_test_papers.destroy');
+
+    Route::get('mock-test-paper-details/{course}/{mtp_id}', [MockTestPaperDetailController::class, 'index'])->name('mock_test_paper_details.index');
+    Route::post('mock-test-papers-details/store', [MockTestPaperDetailController::class, 'store'])->name('mock_test_paper_details.store');
+    Route::get('mock-test-papers-details/{course}/{mtp_id}/{id}/edit', [MockTestPaperDetailController::class, 'edit'])->name('mock_test_paper_details.edit');
+    Route::post('mock-test-papers-details/{id}', [MockTestPaperDetailController::class, 'update'])->name('mock_test_paper_details.update');
+    Route::get('mock-test-papers-details/destroy/{fileType}/{id}', [MockTestPaperDetailController::class, 'destroy'])->name('mock_test_paper_details.destroy');
+    Route::get('mock-test-papers-details/delete/{id}', [MockTestPaperDetailController::class, 'delete'])->name('mock_test_paper_details.delete');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {

@@ -38,4 +38,9 @@ class PaperDetail extends Model
         }
         return $result;
     }
+
+    public function mockTestPaperDetails()
+    {
+        return $this->hasMany(MockTestPaperDetail::class, 'paper_id');
+    }
 }
