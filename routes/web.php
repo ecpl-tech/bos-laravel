@@ -3,9 +3,11 @@
 // use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\FeedController;
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\PouUserController;
 use App\Http\Controllers\SliderController;
+use App\Http\Controllers\StudentJournalController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -96,6 +98,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::put('sliders/{id}', [SliderController::class, 'update'])->name('sliders.update');
     Route::post('sliders/{id}/is_public', [SliderController::class, 'togglePublic'])->name('sliders.is_public');
     Route::delete('sliders/{id}', [SliderController::class, 'destroy'])->name('sliders.destroy');
+
+    Route::get('student_journals', [StudentJournalController::class, 'index'])->name('student_journals.index');
+    Route::get('student_journals/create', [StudentJournalController::class, 'create'])->name('student_journals.create');
+    Route::post('student_journals', [StudentJournalController::class, 'store'])->name('student_journals.store');
+    Route::get('student_journals/{id}/edit', [StudentJournalController::class, 'edit'])->name('student_journals.edit');
+    Route::put('student_journals/{id}', [StudentJournalController::class, 'update'])->name('student_journals.update');
+    Route::post('student_journals/{id}/is_public', [StudentJournalController::class, 'togglePublic'])->name('student_journals.is_public');
+    Route::delete('student_journals/{id}', [StudentJournalController::class, 'destroy'])->name('student_journals.destroy');
+    Route::get('student_journals/pdf/{id}', [StudentJournalController::class, 'pdfthumbnail'])->name('student_journals.pdfthumbnail');
+
+    Route::get('feeds', [FeedController::class, 'index'])->name('feeds.index');
+    Route::get('feeds/create', [FeedController::class, 'create'])->name('feeds.create');
+    Route::post('feeds', [FeedController::class, 'store'])->name('feeds.store');
+    Route::get('feeds/{id}/edit', [FeedController::class, 'edit'])->name('feeds.edit');
+    Route::put('feeds/{id}', [FeedController::class, 'update'])->name('feeds.update');
+    Route::delete('feeds/{id}', [FeedController::class, 'destroy'])->name('feeds.destroy');
 
     Route::get('faculty-assign-paper/{id}', [FacultyController::class, 'assignPaper'])->name('faculty.assign.paper');
     Route::post('faculty-assign-paper-store/{id}', [FacultyController::class, 'assignPaperStore'])->name('faculty.assign.paper.store');

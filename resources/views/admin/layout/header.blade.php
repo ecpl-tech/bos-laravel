@@ -39,11 +39,11 @@
 </head>
 
 <body>
-    {{-- <div class="loader-wrapper">
+    <div class="loader-wrapper">
         <div class="loader">
             <div class="loader4"></div>
         </div>
-    </div> --}}
+    </div>
     @php
         $user = null;
         $roles = ['superadmin', 'admin', 'faculty', 'esahayta', 'techsupport'];
@@ -401,8 +401,12 @@
                                         <span>Students Journal</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="students_journal_list.php">List</a></li>
-                                        <li><a href="students_journal_add.php">Add</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.student_journals.index') }}">List</a>
+                                        </li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.student_journals.create') }}">Add</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -465,8 +469,8 @@
                                         <span>Feeds</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="feeds_list.php">List</a></li>
-                                        <li><a href="feeds_add.php">Add</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.feeds.index') }}">List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.feeds.create') }}">Add</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -731,8 +735,12 @@
                                         <span>Students Journal</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="students_journal_list.php">List</a></li>
-                                        <li><a href="students_journal_add.php">Add</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.student_journals.index') }}">List</a>
+                                        </li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.student_journals.create') }}">Add</a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -799,8 +807,8 @@
                                         <span>Feeds</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="feeds_list.php">List</a></li>
-                                        <li><a href="feeds_add.php">Add</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.feeds.index') }}">List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.feeds.create') }}">Add</a></li>
                                     </ul>
                                 </li>
 
