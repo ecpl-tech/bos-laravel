@@ -604,8 +604,8 @@
                                         <span>Announcement</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="announcement-list.php">List</a></li>
-                                        <li><a href="announcement-add.php">Add</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.announcement.index') }}">List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.announcement.create') }}">Add</a></li>
                                     </ul>
                                 </li>
 
