@@ -105,6 +105,13 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::post('student_journals/{id}/is_public', [StudentJournalController::class, 'togglePublic'])->name('student_journals.is_public');
     Route::delete('student_journals/{id}', [StudentJournalController::class, 'destroy'])->name('student_journals.destroy');
     Route::get('student_journals/pdf/{id}', [StudentJournalController::class, 'pdfthumbnail'])->name('student_journals.pdfthumbnail');
+
+    Route::get('feeds', [FeedController::class, 'index'])->name('feeds.index');
+    Route::get('feeds/create', [FeedController::class, 'create'])->name('feeds.create');
+    Route::post('feeds', [FeedController::class, 'store'])->name('feeds.store');
+    Route::get('feeds/{id}/edit', [FeedController::class, 'edit'])->name('feeds.edit');
+    Route::put('feeds/{id}', [FeedController::class, 'update'])->name('feeds.update');
+    Route::delete('feeds/{id}', [FeedController::class, 'destroy'])->name('feeds.destroy');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
