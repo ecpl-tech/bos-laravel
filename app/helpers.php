@@ -11,3 +11,14 @@ if (!function_exists('currentUser')) {
         return null;
     }
 }
+
+function Batch($type, $status = 'current')
+{
+    $batches = [
+        'LVC_current' => 'batch-01',   // <-- set to batch-01
+        'LVRC_current' => 'batch-02',
+        'LVC_previous' => 'batch-01',
+        'LVRC_previous' => 'batch-01',
+    ];
+    return $batches[$type . '_' . $status] ?? '';
+}

@@ -295,9 +295,9 @@
                                     </a>
                                     <ul class="sidebar-submenu">
                                         <li><a href="{{ route(currentUser()->role . '.lecture.add') }}">Add Lecture</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Live Class List</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">BFYS Class List</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Revisionary Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'live']) }}">Live Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'bfys']) }}">BFYS Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'revisionary']) }}">Revisionary Class List</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
