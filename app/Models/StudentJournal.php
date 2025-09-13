@@ -1,0 +1,11 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Model;
+
+class StudentJournal extends Model
+{
+    protected $table = 'student_journals';
+    protected $guarded = [];
+}
