@@ -1,6 +1,8 @@
 <?php
 
 // use App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\FeedController;
@@ -79,6 +81,16 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::post('mock-test-papers/{id}', [MockTestPaperController::class, 'update'])->name('mock_test_papers.update');
     Route::get('mock-test-papers/{id}', [MockTestPaperController::class, 'destroy'])->name('mock_test_papers.destroy');
 
+
+    Route::get('student_journals', [StudentJournalController::class, 'index'])->name('student_journals.index');
+    Route::get('student_journals/create', [StudentJournalController::class, 'create'])->name('student_journals.create');
+    Route::post('student_journals', [StudentJournalController::class, 'store'])->name('student_journals.store');
+    Route::get('student_journals/{id}/edit', [StudentJournalController::class, 'edit'])->name('student_journals.edit');
+    Route::put('student_journals/{id}', [StudentJournalController::class, 'update'])->name('student_journals.update');
+    Route::post('student_journals/{id}/is_public', [StudentJournalController::class, 'togglePublic'])->name('student_journals.is_public');
+    Route::delete('student_journals/{id}', [StudentJournalController::class, 'destroy'])->name('student_journals.destroy');
+    Route::get('student_journals/pdf/{id}', [StudentJournalController::class, 'pdfthumbnail'])->name('student_journals.pdfthumbnail');
+
     Route::get('mock-test-paper-details/{course}/{mtp_id}', [MockTestPaperDetailController::class, 'index'])->name('mock_test_paper_details.index');
     Route::post('mock-test-papers-details/store', [MockTestPaperDetailController::class, 'store'])->name('mock_test_paper_details.store');
     Route::get('mock-test-papers-details/{course}/{mtp_id}/{id}/edit', [MockTestPaperDetailController::class, 'edit'])->name('mock_test_paper_details.edit');
@@ -89,6 +101,16 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+
+    Route::get('announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+    Route::get('announcement/create', [AnnouncementController::class, 'create'])->name('announcement.create');
+    Route::post('announcement', [AnnouncementController::class, 'store'])->name('announcement.store');
+    Route::get('announcement/{id}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+    Route::put('announcement/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
+    Route::post('announcement/{id}/is_new', [AnnouncementController::class, 'toggleIsnew'])->name('announcement.is_new');
+    Route::post('announcement/{id}/is_public', [AnnouncementController::class, 'togglePublic'])->name('announcement.is_public');
+    Route::delete('announcement/{id}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
+    Route::get('announcement/pdf/{id}', [AnnouncementController::class, 'pdfthumbnail'])->name('announcement.pdfthumbnail');
 
     Route::get('faculty-add', [FacultyController::class, 'create'])->name('faculty.add');
     Route::post('faculty-store', [FacultyController::class, 'store'])->name('faculty.store');
