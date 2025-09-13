@@ -12,4 +12,10 @@ class Lecture extends Model
     protected $guarded = [];
 
     protected $table = 'lectures';
+    
+
+    public function lectureDetails()
+    {
+        return $this->hasMany(LectureDetail::class, 'lecture_id');
+    }
 }

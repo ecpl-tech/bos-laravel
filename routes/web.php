@@ -8,6 +8,8 @@ use App\Http\Controllers\PouUserController;
 use App\Http\Controllers\SliderController;
 use App\Http\Controllers\MockTestPaperController;
 use App\Http\Controllers\MockTestPaperDetailController;
+use App\Http\Controllers\FeedbackController;
+use App\Http\Controllers\BatchController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -83,6 +85,15 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::post('mock-test-papers-details/{id}', [MockTestPaperDetailController::class, 'update'])->name('mock_test_paper_details.update');
     Route::get('mock-test-papers-details/destroy/{fileType}/{id}', [MockTestPaperDetailController::class, 'destroy'])->name('mock_test_paper_details.destroy');
     Route::get('mock-test-papers-details/delete/{id}', [MockTestPaperDetailController::class, 'delete'])->name('mock_test_paper_details.delete');
+
+    Route::get('feedback/', [FeedbackController::class, 'index'])->name('feedback.index');
+
+    Route::get('batch-details', [BatchController::class, 'index'])->name('batch_details.index');
+    Route::post('batch-details', [BatchController::class, 'store'])->name('batch_details.store');
+    Route::post('batch-details/{id}/is_public', [BatchController::class, 'togglePublic'])->name('batch_details.is_public');
+    Route::get('batch-details/{id}/edit', [BatchController::class, 'edit'])->name('batch_details.edit');
+    Route::post('batch-details/{id}', [BatchController::class, 'update'])->name('batch_details.update');
+    Route::delete('batch-details/{id}', [BatchController::class, 'destroy'])->name('batch_details.destroy');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {

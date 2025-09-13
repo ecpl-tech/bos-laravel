@@ -26,4 +26,9 @@ class Registration_ssp extends Model
         'device_id',
         'fcm_token',
     ];
+
+    public function studentFeedback()
+    {
+        return $this->hasMany(Feedback::class, 'registration_no', 'registration_no');
+    }
 }
