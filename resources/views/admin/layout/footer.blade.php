@@ -138,7 +138,7 @@
   <script src="{{ URL::asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
   <script src="{{ URL::asset('assets/js/datatable/datatables/datatable.custom.js') }}"></script>
   <!-- end table -->
-
+  @stack('scripts')
   </body>
 
   </html>
