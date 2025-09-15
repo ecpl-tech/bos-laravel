@@ -12,6 +12,7 @@ use App\Http\Controllers\MockTestPaperController;
 use App\Http\Controllers\MockTestPaperDetailController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\BosWebinarController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -112,6 +113,13 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::get('feeds/{id}/edit', [FeedController::class, 'edit'])->name('feeds.edit');
     Route::put('feeds/{id}', [FeedController::class, 'update'])->name('feeds.update');
     Route::delete('feeds/{id}', [FeedController::class, 'destroy'])->name('feeds.destroy');
+
+    Route::get('bos-webinar-details', [BosWebinarController::class, 'index'])->name('bos_webinar_details.index');
+    Route::post('bos-webinar-details/store', [BosWebinarController::class, 'store'])->name('bos_webinar_details.store');
+    Route::post('bos-webinar-details/{id}/is_public', [BosWebinarController::class, 'togglePublic'])->name('bos_webinar_details.is_public');
+    Route::get('bos-webinar-details/{id}/edit', [BosWebinarController::class, 'edit'])->name('bos_webinar_details.edit');
+    Route::post('bos-webinar-details/{id}', [BosWebinarController::class, 'update'])->name('bos_webinar_details.update');
+    Route::delete('bos-webinar-details/{id}', [BosWebinarController::class, 'destroy'])->name('bos_webinar_details.destroy');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {
