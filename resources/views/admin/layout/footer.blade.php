@@ -121,18 +121,6 @@
   <script src="{{ URL::asset('assets/js/script.js') }}"></script>
 
   <script src="{{ URL::asset('assets/js/editors/quill.js') }}"></script>
-  <script>
-      var editor = new Quill("#editor", {
-          modules: {
-              toolbar: "#toolbar"
-          },
-          theme: "snow",
-          placeholder: "Enter your messages...",
-      });
-      document.querySelector("#sliderForm").addEventListener("submit", function() {
-          document.querySelector("#description").value = editor.root.innerHTML;
-      });
-  </script>
 
   <!-- table -->
   <script src="{{ URL::asset('assets/js/datatable/datatables/jquery.dataTables.min.js') }}"></script>
