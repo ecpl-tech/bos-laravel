@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 if (!function_exists('currentUser')) {
     function currentUser() {
         $guards = ['superadmin', 'admin', 'faculty', 'esahayta', 'techsupport'];
@@ -10,4 +11,15 @@ if (!function_exists('currentUser')) {
         }
         return null;
     }
+}
+
+function Batch($course, $status)
+{
+    $batch = DB::table('batches')
+        ->where('course', $course)
+        ->where('batch_status', $status)
+        ->orderBy('batch', 'asc')
+        ->get();
+
+    return $batch ?? null;
 }

@@ -15,6 +15,7 @@ use App\Http\Controllers\MockTestPaperDetailController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\BatchController;
 use App\Http\Controllers\PushNotificationController;
+use App\Http\Controllers\BosWebinarController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -70,10 +71,10 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
 
     Route::get('lecture/add', [LectureController::class, 'create'])->name('lecture.add');
     Route::post('lecture/store', [LectureController::class, 'store'])->name('lecture.store');
-    Route::get('lecture/list', [LectureController::class, 'index'])->name('lecture.list');
+    Route::get('lecture/list/{class}', [LectureController::class, 'index'])->name('lecture.list');
     Route::get('lecture/edit/{id}', [LectureController::class, 'edit'])->name('lecture.edit');
     Route::post('lecture/update/{id}', [LectureController::class, 'update'])->name('lecture.update');
-    Route::get('lecture/destroy/{id}', [LectureController::class, 'destroy'])->name('lecture.destroy');
+    Route::delete('lecture/destroy/{id}', [LectureController::class, 'destroy'])->name('lecture.destroy');
     Route::post('lecture/status/{id}', [LectureController::class, 'status'])->name('lecture.status');
 
     Route::get('mock-test-papers/', [MockTestPaperController::class, 'index'])->name('mock_test_papers.index');
@@ -83,7 +84,6 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::get('mock-test-papers/{id}/edit', [MockTestPaperController::class, 'edit'])->name('mock_test_papers.edit');
     Route::post('mock-test-papers/{id}', [MockTestPaperController::class, 'update'])->name('mock_test_papers.update');
     Route::get('mock-test-papers/{id}', [MockTestPaperController::class, 'destroy'])->name('mock_test_papers.destroy');
-
 
     Route::get('student_journals', [StudentJournalController::class, 'index'])->name('student_journals.index');
     Route::get('student_journals/create', [StudentJournalController::class, 'create'])->name('student_journals.create');
@@ -116,6 +116,29 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::get('batch-details/{id}/edit', [BatchController::class, 'edit'])->name('batch_details.edit');
     Route::post('batch-details/{id}', [BatchController::class, 'update'])->name('batch_details.update');
     Route::delete('batch-details/{id}', [BatchController::class, 'destroy'])->name('batch_details.destroy');
+
+    Route::get('student_journals', [StudentJournalController::class, 'index'])->name('student_journals.index');
+    Route::get('student_journals/create', [StudentJournalController::class, 'create'])->name('student_journals.create');
+    Route::post('student_journals', [StudentJournalController::class, 'store'])->name('student_journals.store');
+    Route::get('student_journals/{id}/edit', [StudentJournalController::class, 'edit'])->name('student_journals.edit');
+    Route::put('student_journals/{id}', [StudentJournalController::class, 'update'])->name('student_journals.update');
+    Route::post('student_journals/{id}/is_public', [StudentJournalController::class, 'togglePublic'])->name('student_journals.is_public');
+    Route::delete('student_journals/{id}', [StudentJournalController::class, 'destroy'])->name('student_journals.destroy');
+    Route::get('student_journals/pdf/{id}', [StudentJournalController::class, 'pdfthumbnail'])->name('student_journals.pdfthumbnail');
+
+    Route::get('feeds', [FeedController::class, 'index'])->name('feeds.index');
+    Route::get('feeds/create', [FeedController::class, 'create'])->name('feeds.create');
+    Route::post('feeds', [FeedController::class, 'store'])->name('feeds.store');
+    Route::get('feeds/{id}/edit', [FeedController::class, 'edit'])->name('feeds.edit');
+    Route::put('feeds/{id}', [FeedController::class, 'update'])->name('feeds.update');
+    Route::delete('feeds/{id}', [FeedController::class, 'destroy'])->name('feeds.destroy');
+
+    Route::get('bos-webinar-details', [BosWebinarController::class, 'index'])->name('bos_webinar_details.index');
+    Route::post('bos-webinar-details/store', [BosWebinarController::class, 'store'])->name('bos_webinar_details.store');
+    Route::post('bos-webinar-details/{id}/is_public', [BosWebinarController::class, 'togglePublic'])->name('bos_webinar_details.is_public');
+    Route::get('bos-webinar-details/{id}/edit', [BosWebinarController::class, 'edit'])->name('bos_webinar_details.edit');
+    Route::post('bos-webinar-details/{id}', [BosWebinarController::class, 'update'])->name('bos_webinar_details.update');
+    Route::delete('bos-webinar-details/{id}', [BosWebinarController::class, 'destroy'])->name('bos_webinar_details.destroy');
 });
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admin']], function () {

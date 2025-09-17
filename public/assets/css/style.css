@@ -1842,6 +1842,11 @@ svg.f-light {
   border-color: var(--theme-secondary) !important;
 }
 
+.btn-white {
+  background-color: #ffffff !important;
+  border-color: #d4d4d4 !important;
+}
+
 .btn-hover-effect:hover {
   -webkit-animation: push 0.5s linear 1;
           animation: push 0.5s linear 1;
