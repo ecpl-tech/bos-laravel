@@ -284,7 +284,8 @@
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                                     <a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-learning') }}">
+                                            <use
+                                                href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-learning') }}">
                                             </use>
                                         </svg>
                                         <svg class="fill-icon">
@@ -294,10 +295,14 @@
                                         <span>Lecture Details</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.add') }}">Add Lecture</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Live Class List</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">BFYS Class List</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Revisionary Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.add') }}">Add
+                                                Lecture</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Live Class
+                                                List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">BFYS Class
+                                                List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.list') }}">Revisionary
+                                                Class List</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -322,18 +327,24 @@
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
                                     <a class="sidebar-link sidebar-title" href="#">
                                         <svg class="stroke-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-knowledgebase') }}">
+                                            <use
+                                                href="{{ URL::asset('assets/svg/icon-sprite.svg#stroke-knowledgebase') }}">
                                             </use>
                                         </svg>
                                         <svg class="fill-icon">
-                                            <use href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-knowledgebase') }}">
+                                            <use
+                                                href="{{ URL::asset('assets/svg/icon-sprite.svg#fill-knowledgebase') }}">
                                             </use>
                                         </svg>
                                         <span>Mock Test Paper</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="{{ route(currentUser()->role.'.mock_test_papers.index') }}">List</a></li>
-                                        <li><a href="{{ route(currentUser()->role.'.mock_test_papers.create') }}">Add</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.mock_test_papers.index') }}">List</a>
+                                        </li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.mock_test_papers.create') }}">Add</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -604,8 +615,12 @@
                                         <span>Announcement</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="{{ route(currentUser()->role . '.announcement.index') }}">List</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.announcement.create') }}">Add</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.announcement.index') }}">List</a>
+                                        </li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.announcement.create') }}">Add</a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -717,8 +732,12 @@
                                         <span>Push Notification</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="push_notification_list.php">List</a></li>
-                                        <li><a href="push_notification_add.php">Add</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.push-notification.index') }}">List</a>
+                                        </li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.push-notification.create') }}">Add</a>
+                                        </li>
                                     </ul>
                                 </li>
 

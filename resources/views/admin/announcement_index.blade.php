@@ -49,6 +49,7 @@
                                                         ❌
                                                     @endif
                                                 </td>
+                                                <td>{{ $value->course }}</td>
                                                 <td>{{ $value->category }}</td>
                                                 <td>{{ $value->title }}</td>
                                                 <td>{{ $value->type }}</td>

@@ -14,6 +14,7 @@ use App\Http\Controllers\MockTestPaperController;
 use App\Http\Controllers\MockTestPaperDetailController;
 use App\Http\Controllers\FeedbackController;
 use App\Http\Controllers\BatchController;
+use App\Http\Controllers\PushNotificationController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -93,6 +94,13 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::delete('student_journals/{id}', [StudentJournalController::class, 'destroy'])->name('student_journals.destroy');
     Route::get('student_journals/pdf/{id}', [StudentJournalController::class, 'pdfthumbnail'])->name('student_journals.pdfthumbnail');
 
+    Route::get('feeds', [FeedController::class, 'index'])->name('feeds.index');
+    Route::get('feeds/create', [FeedController::class, 'create'])->name('feeds.create');
+    Route::post('feeds', [FeedController::class, 'store'])->name('feeds.store');
+    Route::get('feeds/{id}/edit', [FeedController::class, 'edit'])->name('feeds.edit');
+    Route::put('feeds/{id}', [FeedController::class, 'update'])->name('feeds.update');
+    Route::delete('feeds/{id}', [FeedController::class, 'destroy'])->name('feeds.destroy');
+
     Route::get('mock-test-paper-details/{course}/{mtp_id}', [MockTestPaperDetailController::class, 'index'])->name('mock_test_paper_details.index');
     Route::post('mock-test-papers-details/store', [MockTestPaperDetailController::class, 'store'])->name('mock_test_paper_details.store');
     Route::get('mock-test-papers-details/{course}/{mtp_id}/{id}/edit', [MockTestPaperDetailController::class, 'edit'])->name('mock_test_paper_details.edit');
@@ -121,7 +129,14 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::post('announcement/{id}/is_new', [AnnouncementController::class, 'toggleIsnew'])->name('announcement.is_new');
     Route::post('announcement/{id}/is_public', [AnnouncementController::class, 'togglePublic'])->name('announcement.is_public');
     Route::delete('announcement/{id}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
-    Route::get('announcement/pdf/{id}', [AnnouncementController::class, 'pdfthumbnail'])->name('announcement.pdfthumbnail');
+
+    Route::get('push-notification', [PushNotificationController::class, 'index'])->name('push-notification.index');
+    Route::get('push-notification/create', [PushNotificationController::class, 'create'])->name('push-notification.create');
+    Route::post('push-notification', [PushNotificationController::class, 'store'])->name('push-notification.store');
+    Route::get('push-notification/{id}/edit', [PushNotificationController::class, 'edit'])->name('push-notification.edit');
+    Route::put('push-notification/{id}', [PushNotificationController::class, 'update'])->name('push-notification.update');
+    Route::delete('push-notification/{id}', [PushNotificationController::class, 'destroy'])->name('push-notification.destroy');
+    Route::post('push-notification/{id}', [PushNotificationController::class, 'send'])->name('push-notification.send');
 
     Route::get('faculty-add', [FacultyController::class, 'create'])->name('faculty.add');
     Route::post('faculty-store', [FacultyController::class, 'store'])->name('faculty.store');
@@ -138,7 +153,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'middleware' => ['role:admi
     Route::put('/pou_user/{id}', [PouUserController::class, 'update'])->name('pou_user.update');
     Route::post('/pou_user/{id}/is_public', [PouUserController::class, 'togglePublic'])->name('pou_user.is_public');
     Route::delete('/pou_user/{id}', [PouUserController::class, 'destroy'])->name('pou_user.destroy');
-
 
     Route::get('sliders', [SliderController::class, 'index'])->name('sliders.index');
     Route::get('sliders/create', [SliderController::class, 'create'])->name('sliders.create');
