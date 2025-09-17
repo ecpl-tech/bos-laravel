@@ -19,7 +19,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-12">
-                    <form action="{{ route('admin.faculty.assign.paper.store', $faculty->id) }}" method="POST">
+                    <form action="{{ route(currentUser()->role.'.faculty.assign.paper.store', $faculty->id) }}" method="POST">
                         @csrf
                         <div class="form theme-form">
                             <div class="row">
@@ -106,7 +106,7 @@
                                                 <td>{{ $value->paper->papername . ' (' . $value->paper->scheme . ')' ?? 'N/A' }}
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('admin.faculty.assign.paper.status', $value->id) }}"
+                                                    <form action="{{ route(currentUser()->role.'.faculty.assign.paper.status', $value->id) }}"
                                                         method="post">
                                                         @csrf
                                                         <div class="media-body switch-md icon-state">
