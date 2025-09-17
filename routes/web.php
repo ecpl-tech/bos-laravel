@@ -84,29 +84,6 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::post('mock-test-papers/{id}', [MockTestPaperController::class, 'update'])->name('mock_test_papers.update');
     Route::get('mock-test-papers/{id}', [MockTestPaperController::class, 'destroy'])->name('mock_test_papers.destroy');
 
-<<<<<<< HEAD
-=======
-
->>>>>>> fd2225bcc787d3329ea329dae6a68a89d08b1571
-    Route::get('student_journals', [StudentJournalController::class, 'index'])->name('student_journals.index');
-    Route::get('student_journals/create', [StudentJournalController::class, 'create'])->name('student_journals.create');
-    Route::post('student_journals', [StudentJournalController::class, 'store'])->name('student_journals.store');
-    Route::get('student_journals/{id}/edit', [StudentJournalController::class, 'edit'])->name('student_journals.edit');
-    Route::put('student_journals/{id}', [StudentJournalController::class, 'update'])->name('student_journals.update');
-    Route::post('student_journals/{id}/is_public', [StudentJournalController::class, 'togglePublic'])->name('student_journals.is_public');
-    Route::delete('student_journals/{id}', [StudentJournalController::class, 'destroy'])->name('student_journals.destroy');
-    Route::get('student_journals/pdf/{id}', [StudentJournalController::class, 'pdfthumbnail'])->name('student_journals.pdfthumbnail');
-
-<<<<<<< HEAD
-    Route::get('feeds', [FeedController::class, 'index'])->name('feeds.index');
-    Route::get('feeds/create', [FeedController::class, 'create'])->name('feeds.create');
-    Route::post('feeds', [FeedController::class, 'store'])->name('feeds.store');
-    Route::get('feeds/{id}/edit', [FeedController::class, 'edit'])->name('feeds.edit');
-    Route::put('feeds/{id}', [FeedController::class, 'update'])->name('feeds.update');
-    Route::delete('feeds/{id}', [FeedController::class, 'destroy'])->name('feeds.destroy');
-
-=======
->>>>>>> fd2225bcc787d3329ea329dae6a68a89d08b1571
     Route::get('mock-test-paper-details/{course}/{mtp_id}', [MockTestPaperDetailController::class, 'index'])->name('mock_test_paper_details.index');
     Route::post('mock-test-papers-details/store', [MockTestPaperDetailController::class, 'store'])->name('mock_test_paper_details.store');
     Route::get('mock-test-papers-details/{course}/{mtp_id}/{id}/edit', [MockTestPaperDetailController::class, 'edit'])->name('mock_test_paper_details.edit');
