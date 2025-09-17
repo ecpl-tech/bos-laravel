@@ -120,7 +120,7 @@ class LectureController extends Controller
         $lecture->time = $request['time'];
         $lecture->video_url = $request['video_url'] ?? null;
         $lecture->zoom_link = $request['zoom_link'] ?? null;
-        $lecture->batch = Batch('LVC', 'current'); // get from helper
+        $lecture->batch = Batch($request['course'], 'current'); // get from helper
         $lecture->save();
 
         return redirect()->route(currentUser()->role . '.lecture.add')->with('success', 'Lecture created successfully.');

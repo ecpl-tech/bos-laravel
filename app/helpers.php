@@ -1,5 +1,6 @@
 <?php
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 if (!function_exists('currentUser')) {
     function currentUser() {
         $guards = ['superadmin', 'admin', 'faculty', 'esahayta', 'techsupport'];
@@ -12,13 +13,13 @@ if (!function_exists('currentUser')) {
     }
 }
 
-function Batch($type, $status = 'current')
+function Batch($course, $status)
 {
-    $batches = [
-        'LVC_current' => 'batch-01',   // <-- set to batch-01
-        'LVRC_current' => 'batch-02',
-        'LVC_previous' => 'batch-01',
-        'LVRC_previous' => 'batch-01',
-    ];
-    return $batches[$type . '_' . $status] ?? '';
+    $batch = DB::table('batches')
+        ->where('course', $course)
+        ->where('batch_status', $status)
+        ->orderBy('batch', 'asc')
+        ->get();
+
+    return $batch ?? null;
 }
