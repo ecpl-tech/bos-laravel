@@ -48,7 +48,7 @@ class FacultyController extends Controller
             'status' => $request->status,
         ]);
 
-        return redirect()->route('admin.faculty.list')->with('success', 'Faculty added successfully.');
+        return redirect()->route(currentUser()->role.'.faculty.list')->with('success', 'Faculty added successfully.');
     }
 
     /**
@@ -91,7 +91,7 @@ class FacultyController extends Controller
         $faculty->status = $request->status;
         $faculty->save();
 
-        return redirect()->route('admin.faculty.list')->with('success', 'Faculty updated successfully.');
+        return redirect()->route(currentUser()->role.'.faculty.list')->with('success', 'Faculty updated successfully.');
     }
 
     /**
@@ -101,7 +101,7 @@ class FacultyController extends Controller
     {
         $faculty = Faculty::findOrFail($id);
         $faculty->delete();
-        return redirect()->route('admin.faculty.list')->with('success', 'Faculty deleted successfully.');
+        return redirect()->route(currentUser()->role.'.faculty.list')->with('success', 'Faculty deleted successfully.');
     }
 
     /**
@@ -113,7 +113,7 @@ class FacultyController extends Controller
         $faculty->status = !$faculty->status;
         $faculty->status = $request->status ? '1' : '0';
         $faculty->save();
-        return redirect()->route('admin.faculty.list')->with('success', 'Faculty status updated successfully.');
+        return redirect()->route(currentUser()->role.'.faculty.list')->with('success', 'Faculty status updated successfully.');
     }
 
     public function assignPaper($id)
@@ -148,7 +148,7 @@ class FacultyController extends Controller
             ]);
         }
 
-        return redirect()->route('admin.faculty.assign.paper', $id)->with('success', 'Papers assigned to faculty successfully.');
+        return redirect()->route(currentUser()->role.'.faculty.assign.paper', $id)->with('success', 'Papers assigned to faculty successfully.');
     }
 
     public function assignPaperStatus(Request $request, $id)
@@ -157,6 +157,6 @@ class FacultyController extends Controller
         $facultyAssignPaper->status = !$facultyAssignPaper->status;
         $facultyAssignPaper->status = $request->status ? '1' : '0';
         $facultyAssignPaper->save();
-        return redirect()->route('admin.faculty.assign.paper', $facultyAssignPaper->faculty_id)->with('success', 'Paper assignment status updated successfully.');
+        return redirect()->route(currentUser()->role.'.faculty.assign.paper', $facultyAssignPaper->faculty_id)->with('success', 'Paper assignment status updated successfully.');
     }
 }

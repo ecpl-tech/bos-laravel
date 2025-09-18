@@ -10,7 +10,7 @@
                     </div>
                     <div class="col-6">
                         <div class="justify-content-end d-flex">
-                            <a class="btn btn-primary" href="{{ route('admin.faculty.add') }}">
+                            <a class="btn btn-primary" href="{{ route(currentUser()->role.'.faculty.add') }}">
                                 <i class="fa fa-plus"></i> Add Faculty</a>
                         </div>
                     </div>
@@ -46,13 +46,13 @@
                                                 <td>{{ $value->email }}</td>
                                                 <td>{{ $value->show_password }}</td>
                                                 <td>
-                                                    <a href="{{ route('admin.faculty.assign.paper', $value->id) }}"
+                                                    <a href="{{ route(currentUser()->role.'.faculty.assign.paper', $value->id) }}"
                                                         class="btn btn-sm btn-primary">
                                                         Assign Paper
                                                     </a>
                                                 </td>
                                                 <td>
-                                                    <form action="{{ route('admin.faculty.status', $value->id) }}"
+                                                    <form action="{{ route(currentUser()->role.'.faculty.status', $value->id) }}"
                                                         method="post">
                                                         @csrf
                                                         <div class="media-body switch-md icon-state">
@@ -68,10 +68,10 @@
                                                 <td>
                                                     <ul class="action">
                                                         <li class="edit"><a
-                                                                href="{{ route('admin.faculty.edit', $value->id) }}"
+                                                                href="{{ route(currentUser()->role.'.faculty.edit', $value->id) }}"
                                                                 class="form-actions"><i data-feather="edit"></i></a></li>
                                                         <li class="delete"><a
-                                                                href="{{ route('admin.faculty.destroy', $value->id) }}"
+                                                                href="{{ route(currentUser()->role.'.faculty.destroy', $value->id) }}"
                                                                 class="form-actions"><i data-feather="trash-2"></i></a></li>
                                                     </ul>
                                                 </td>

@@ -13,7 +13,7 @@ if (!function_exists('currentUser')) {
     }
 }
 
-function Batch($course, $status)
+function getBatch($course, $status)
 {
     $batch = DB::table('batches')
         ->where('course', $course)
