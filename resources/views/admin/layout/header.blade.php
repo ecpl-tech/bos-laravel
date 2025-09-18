@@ -258,8 +258,12 @@
                                         <span>Announcement</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="announcement-list.php">List</a></li>
-                                        <li><a href="announcement-add.php">Add</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.announcement.index') }}">List</a>
+                                        </li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.announcement.create') }}">Add</a>
+                                        </li>
                                     </ul>
                                 </li>
 
@@ -295,10 +299,17 @@
                                         <span>Lecture Details</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.add') }}">Add Lecture</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'live']) }}">Live Class List</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'bfys']) }}">BFYS Class List</a></li>
-                                        <li><a href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'revisionary']) }}">Revisionary Class List</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.lecture.add') }}">Add
+                                                Lecture</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'live']) }}">Live
+                                                Class List</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'bfys']) }}">BFYS
+                                                Class List</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.lecture.list', ['class' => 'revisionary']) }}">Revisionary
+                                                Class List</a></li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -391,8 +402,12 @@
                                         <span>Push Notification</span>
                                     </a>
                                     <ul class="sidebar-submenu">
-                                        <li><a href="push_notification_list.php">List</a></li>
-                                        <li><a href="push_notification_add.php">Add</a></li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.push-notification.index') }}">List</a>
+                                        </li>
+                                        <li><a
+                                                href="{{ route(currentUser()->role . '.push-notification.create') }}">Add</a>
+                                        </li>
                                     </ul>
                                 </li>
                                 <li class="sidebar-list"><i class="fa fa-thumb-tack"></i>
@@ -842,7 +857,8 @@
                                     <ul class="sidebar-submenu">
                                         <li><a href="{{ route(currentUser()->role . '.sliders.index') }}">List</a>
                                         </li>
-                                        <li><a href="slider_add.php">Add</a></li>
+                                        <li><a href="{{ route(currentUser()->role . '.sliders.create') }}">Add</a>
+                                        </li>
                                     </ul>
                                 </li>
 

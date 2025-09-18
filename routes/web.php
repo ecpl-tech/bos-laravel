@@ -30,6 +30,23 @@ Route::get('logout', [UserController::class, 'logout'])->name('logout');
 Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => ['role:superadmin']], function () {
     Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
+    Route::get('announcement', [AnnouncementController::class, 'index'])->name('announcement.index');
+    Route::get('announcement/create', [AnnouncementController::class, 'create'])->name('announcement.create');
+    Route::post('announcement', [AnnouncementController::class, 'store'])->name('announcement.store');
+    Route::get('announcement/{id}/edit', [AnnouncementController::class, 'edit'])->name('announcement.edit');
+    Route::put('announcement/{id}', [AnnouncementController::class, 'update'])->name('announcement.update');
+    Route::post('announcement/{id}/is_new', [AnnouncementController::class, 'toggleIsnew'])->name('announcement.is_new');
+    Route::post('announcement/{id}/is_public', [AnnouncementController::class, 'togglePublic'])->name('announcement.is_public');
+    Route::delete('announcement/{id}', [AnnouncementController::class, 'destroy'])->name('announcement.destroy');
+
+    Route::get('push-notification', [PushNotificationController::class, 'index'])->name('push-notification.index');
+    Route::get('push-notification/create', [PushNotificationController::class, 'create'])->name('push-notification.create');
+    Route::post('push-notification', [PushNotificationController::class, 'store'])->name('push-notification.store');
+    Route::get('push-notification/{id}/edit', [PushNotificationController::class, 'edit'])->name('push-notification.edit');
+    Route::put('push-notification/{id}', [PushNotificationController::class, 'update'])->name('push-notification.update');
+    Route::delete('push-notification/{id}', [PushNotificationController::class, 'destroy'])->name('push-notification.destroy');
+    Route::post('push-notification/{id}', [PushNotificationController::class, 'send'])->name('push-notification.send');
+
     // Admin management routes
     Route::get('user-add', [UserController::class, 'create'])->name('user.add');
     Route::post('user-store', [UserController::class, 'store'])->name('user.store');
@@ -116,22 +133,6 @@ Route::group(['prefix' => 'superadmin', 'as' => 'superadmin.', 'middleware' => [
     Route::get('batch-details/{id}/edit', [BatchController::class, 'edit'])->name('batch_details.edit');
     Route::post('batch-details/{id}', [BatchController::class, 'update'])->name('batch_details.update');
     Route::delete('batch-details/{id}', [BatchController::class, 'destroy'])->name('batch_details.destroy');
-
-    Route::get('student_journals', [StudentJournalController::class, 'index'])->name('student_journals.index');
-    Route::get('student_journals/create', [StudentJournalController::class, 'create'])->name('student_journals.create');
-    Route::post('student_journals', [StudentJournalController::class, 'store'])->name('student_journals.store');
-    Route::get('student_journals/{id}/edit', [StudentJournalController::class, 'edit'])->name('student_journals.edit');
-    Route::put('student_journals/{id}', [StudentJournalController::class, 'update'])->name('student_journals.update');
-    Route::post('student_journals/{id}/is_public', [StudentJournalController::class, 'togglePublic'])->name('student_journals.is_public');
-    Route::delete('student_journals/{id}', [StudentJournalController::class, 'destroy'])->name('student_journals.destroy');
-    Route::get('student_journals/pdf/{id}', [StudentJournalController::class, 'pdfthumbnail'])->name('student_journals.pdfthumbnail');
-
-    Route::get('feeds', [FeedController::class, 'index'])->name('feeds.index');
-    Route::get('feeds/create', [FeedController::class, 'create'])->name('feeds.create');
-    Route::post('feeds', [FeedController::class, 'store'])->name('feeds.store');
-    Route::get('feeds/{id}/edit', [FeedController::class, 'edit'])->name('feeds.edit');
-    Route::put('feeds/{id}', [FeedController::class, 'update'])->name('feeds.update');
-    Route::delete('feeds/{id}', [FeedController::class, 'destroy'])->name('feeds.destroy');
 
     Route::get('bos-webinar-details', [BosWebinarController::class, 'index'])->name('bos_webinar_details.index');
     Route::post('bos-webinar-details/store', [BosWebinarController::class, 'store'])->name('bos_webinar_details.store');
